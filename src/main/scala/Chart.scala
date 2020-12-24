@@ -1,3 +1,7 @@
+import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
+import typings.chartJs.mod._
+
 // We need this workaround because ScalablyTyped generates the imports
 // with JSImport.Namespace and it doesn't find the library.
 @js.native
