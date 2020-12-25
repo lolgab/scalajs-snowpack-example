@@ -1,15 +1,20 @@
+import scala.scalajs.js
+import scala.scalajs.js.annotation.JSImport
+
 import com.raquo.laminar.api.L._
 import org.scalajs.dom
-import scala.scalajs.js
+import org.scalajs.dom.raw.CanvasRenderingContext2D
+import typings.chartJs.mod.^.Chart
 import typings.chartJs.mod._
-import scala.scalajs.js.annotation.JSImport
 
 object Main {
   val app = div(
     canvas(onMountCallback { nodeCtx =>
       // Example taken from
       // https://www.chartjs.org/docs/latest/getting-started/usage.html#creating-a-chart
-      val ctx = nodeCtx.thisNode.ref.getContext("2d")
+      val ctx = nodeCtx.thisNode.ref
+        .getContext("2d")
+        .asInstanceOf[CanvasRenderingContext2D]
       val chartConfiguration = ChartConfiguration()
         .setType(ChartType.bar)
         .setData(
@@ -54,7 +59,7 @@ object Main {
           )
         )
 
-      val chart = Chart(ctx, chartConfiguration)
+      Chart.newInstance2(ctx, chartConfiguration)
     })
   )
 
