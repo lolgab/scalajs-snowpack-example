@@ -1,13 +1,13 @@
 # Scala.js and Snowpack example
 
-This example project show how you can use [Snowpack](https://snowpack.dev) together
+This example project shows how to use [Snowpack](https://snowpack.dev) together
 with [Scala.js](https://scala-js.org).
 
 ## Getting started
 
 You need to:
 
--   Install the libraries:
+-   Install the javascript libraries:
 
     > npm install
 
