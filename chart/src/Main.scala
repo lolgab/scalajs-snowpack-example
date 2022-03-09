@@ -3,11 +3,19 @@ import scala.scalajs.js.annotation.JSImport
 
 import com.raquo.laminar.api.L._
 import org.scalajs.dom
-import org.scalajs.dom.raw.CanvasRenderingContext2D
-import typings.chartJs.mod.^.Chart
+import org.scalajs.dom.CanvasRenderingContext2D
 import typings.chartJs.mod._
 
 object Main {
+  // Need to register Chart dependency
+  // https://www.chartjs.org/docs/latest/getting-started/integration.html#bundlers-webpack-rollup-etc
+  chart.Chart.register(
+    chart.BarController,
+    chart.BarElement,
+    chart.CategoryScale,
+    chart.LinearScale,
+  )
+
   val app = div(
     canvas(onMountCallback { nodeCtx =>
       // Example taken from
@@ -15,6 +23,7 @@ object Main {
       val ctx = nodeCtx.thisNode.ref
         .getContext("2d")
         .asInstanceOf[CanvasRenderingContext2D]
+
       val chartConfiguration = ChartConfiguration()
         .setType(ChartType.bar)
         .setData(
@@ -26,7 +35,7 @@ object Main {
               js.Array(
                 ChartDataSets()
                   .setLabel("# of Votes")
-                  .setData(js.Array(12, 19, 3, 5, 2, 3))
+                  .setData(js.Array(1, 19, 3, 5, 2, 3))
                   .setBackgroundColor(
                     js.Array(
                       "rgba(255, 99, 132, 0.2)",
@@ -58,8 +67,7 @@ object Main {
             )
           )
         )
-
-      Chart.newInstance2(ctx, chartConfiguration)
+      Chart.apply.newInstance2(ctx, chartConfiguration)
     })
   )
 

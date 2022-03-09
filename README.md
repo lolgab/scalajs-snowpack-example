@@ -7,16 +7,22 @@ with [Scala.js](https://scala-js.org).
 
 You need to:
 
--   Install the javascript libraries:
+- Install the javascript libraries:
 
-    > npm install
+  > npm install
 
--   Create the bundle (in a separate terminal):
+- Create the bundle:
 
-    > sbt
+  > ./mill --no-server -j 0 -w chart.publicDev
 
-    > \> ~fastLinkJS
+- Run Snowpack dev server (in a separate terminal):
 
--   Run Snowpack dev server:
+  > npm run start
 
-    > npx snowpack dev
+## Production build
+
+You need to run:
+
+  > ./mill --no-server -j 0 chart.buildProd
+
+Now you can find your production build in the `build` folder.

@@ -1,3 +1,4 @@
-target
+/out
 /node_modules
 /.bsp
+/build
