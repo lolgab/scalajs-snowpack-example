@@ -17,8 +17,13 @@ object chart extends ScalaJSModule {
   private def public(dev: Boolean): Task[Map[String, String]] = {
     val js = if (dev) fastOpt else fullOpt
     T.task {
+      val dest = T.dest
+      val jsDir = js().path / os.up
+      os.list(jsDir).foreach { file =>
+        os.move(file, dest / file.last)
+      }
       val mounts = Map(
-        js().path / os.up -> "/",
+        dest -> "/",
         os.pwd / "public" -> "/"
       )
       mounts.map { case (k, v) =>
