@@ -3,27 +3,17 @@ import scala.scalajs.js.annotation.JSImport
 
 import com.raquo.laminar.api.L._
 import org.scalajs.dom
-import org.scalajs.dom.CanvasRenderingContext2D
 import typings.chartJs.mod._
 
 object Main {
-  // Need to register Chart dependency
-  // https://www.chartjs.org/docs/latest/getting-started/integration.html#bundlers-webpack-rollup-etc
-  chart.Chart.register(
-    chart.BarController,
-    chart.BarElement,
-    chart.CategoryScale,
-    chart.LinearScale,
-  )
-
   val app = div(
     canvas(onMountCallback { nodeCtx =>
       // Example taken from
       // https://www.chartjs.org/docs/latest/getting-started/usage.html#creating-a-chart
       val ctx = nodeCtx.thisNode.ref
+        .asInstanceOf[dom.html.Canvas]
         .getContext("2d")
-        .asInstanceOf[CanvasRenderingContext2D]
-
+        .asInstanceOf[dom.CanvasRenderingContext2D]
       val chartConfiguration = ChartConfiguration()
         .setType(ChartType.bar)
         .setData(
@@ -67,6 +57,7 @@ object Main {
             )
           )
         )
+
       Chart.apply.newInstance2(ctx, chartConfiguration)
     })
   )
