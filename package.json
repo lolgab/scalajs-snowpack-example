@@ -8,7 +8,7 @@
     "typescript": "4.6.2"
   },
   "scripts": {
-    "start": "snowpack dev --config ./snowpack-dev.config.js",
-    "build": "snowpack build --config ./snowpack-prod.config.js"
+    "start": "snowpack dev --config ./snowpack-dev.config.mjs",
+    "build": "snowpack build --config ./snowpack-prod.config.mjs"
   }
 }
