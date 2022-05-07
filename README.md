@@ -1,3 +1,7 @@
+# DEPRECATED
+
+**This example is deprecated in favor of [scalajs-vite-example](https://github.com/lolgab/scalajs-vite-example) since Snowpack itself is now deprecated.**
+
 # Scala.js and Snowpack example
 
 This example project shows how to use [Snowpack](https://snowpack.dev) together
